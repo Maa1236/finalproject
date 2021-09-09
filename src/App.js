@@ -13,7 +13,9 @@ function App() {
   async function letMeIn(event) {
     event.preventDefault();
     let data = await Services(inputEmail, inputPassword);
-    console.log(data);
+    console.log(data.accessToken);
+    localStorage.setItem("token", data.accessToken)
+    //console.log(localStorage.getItem("token"));
   }
 
  
