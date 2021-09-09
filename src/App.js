@@ -1,10 +1,16 @@
 import './App.css';
+import {Services} from './Services/Services';
+import {Fragment} from 'react';
+import {Login} from './Login/Login'
 
 function App() {
   return (
-    <div className="App">
+    <Fragment>
+      <Login />
      
-    </div>
+    </Fragment>
+    
+   
   );
 }
 
