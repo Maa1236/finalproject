@@ -1,6 +1,6 @@
 import './App.css';
 import {Services} from './Services/Services';
-import {Fragment,useState} from 'react';
+import {Fragment,useEffect,useState} from 'react';
 import {Login} from './Components/Login/Login';
 import {MainPage} from './Components/MainPage/MainPage';
 
@@ -8,6 +8,7 @@ function App() {
 
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  const [isLogIn, setIsLogIn] = useState(false);
 
 
   async function letMeIn(event) {
@@ -18,15 +19,24 @@ function App() {
     //console.log(localStorage.getItem("token"));
   }
 
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      setIsLogIn(true);
+    }
+  }, [setIsLogIn])
+  
+  console.log(isLogIn)
+
  
   return (
     <Fragment>
-      <Login 
+      {isLogIn ? <MainPage /> : <Login 
       setInputEmail={setInputEmail}
       setInputPassword={setInputPassword}
       letMeIn={letMeIn}
-      />
-      <MainPage />
+      />}
+      
+      
     </Fragment>
     
    
