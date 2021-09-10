@@ -14,19 +14,22 @@ function App() {
   async function letMeIn(event) {
     event.preventDefault();
     let data = await Services(inputEmail, inputPassword);
-    console.log(data.accessToken);
-    localStorage.setItem("token", data.accessToken)
-    //console.log(localStorage.getItem("token"));
-  }
-
-  useEffect(() => {
-    if(localStorage.getItem("token")){
+    
+    if(data.accessToken){
+      localStorage.setItem("token", data.accessToken)
       setIsLogIn(true);
     }
-  }, [setIsLogIn])
-  
-  console.log(isLogIn)
+  }
 
+  useEffect(()=>{
+    if(localStorage.getItem("token")){
+        setIsLogIn(true);
+    }
+  },[]);
+  
+    //localStorage.clear()
+  // console.log(localStorage.getItem("token"));
+  // console.log(isLogIn)
  
   return (
     <Fragment>
@@ -34,12 +37,8 @@ function App() {
       setInputEmail={setInputEmail}
       setInputPassword={setInputPassword}
       letMeIn={letMeIn}
-      />}
-      
-      
-    </Fragment>
-    
-   
+      />} 
+    </Fragment>   
   );
 }
 
