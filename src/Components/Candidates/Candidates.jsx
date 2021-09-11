@@ -10,7 +10,15 @@ export const Candidates = ({ setIsLogIn }) => {
     useEffect(() => {
         if (localStorage.getItem("token")) {
             setIsLogIn(true);
-        }      
+        }
+        fetch("http://localhost:3333/api/candidates", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(data => setCandidates(data));
+       
     }, [setIsLogIn]);
     console.log(candidates)
 
