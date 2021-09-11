@@ -1,9 +1,10 @@
 import { Candidates } from '../Candidates/Candidates';
 import './CandidateCard.css';
 
-export const CandidateCard = ({ candidate, setLeadToReport }) => {
+export const CandidateCard = ({ candidate, setLeadToReport, setCatchId }) => {
 
     const showMeUserReport = () => {
+        setCatchId(candidate.id)
         setLeadToReport(true);
     }
 
