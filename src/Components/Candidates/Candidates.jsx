@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { CandidateCard } from "../CandidateCard/CandidateCard";
 import { Fragment } from "react/cjs/react.production.min";
 
-export const Candidates = ({ setIsLogIn }) => {
+export const Candidates = ({ setIsLogIn, setLeadToReport }) => {
     const [candidates, setCandidates] = useState([]);
     useEffect(() => {
         if (localStorage.getItem("token")) {
@@ -28,9 +28,9 @@ export const Candidates = ({ setIsLogIn }) => {
         window.location.reload(true)  
     }
 
-    let candidateComponent = candidates.map((candidate, index) => {
+    let candidateComponent = candidates.map((candidate) => {
         return (
-            <CandidateCard candidate={candidate} />
+            <CandidateCard candidate={candidate} key={candidate.id} setLeadToReport={setLeadToReport}/>
         )
     })
 
