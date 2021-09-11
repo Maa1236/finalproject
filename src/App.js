@@ -33,7 +33,7 @@ function App() {
  
   return (
     <Fragment>
-      {isLogIn ? <MainPage /> : <Login 
+      {isLogIn ? <MainPage setIsLogIn={setIsLogIn} /> : <Login 
       setInputEmail={setInputEmail}
       setInputPassword={setInputPassword}
       letMeIn={letMeIn}
