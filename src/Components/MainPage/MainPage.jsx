@@ -18,14 +18,13 @@ export const MainPage = ({ setIsLogIn }) => {
     }
     fetch("http://localhost:3333/api/candidates", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     })
-      .then(response => response.json())
-      .then(data => setCandidates(data));
-
+      .then((response) => response.json())
+      .then((data) => setCandidates(data));
   }, [setIsLogIn]);
-  console.log(candidates)
+  console.log(candidates);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -33,22 +32,31 @@ export const MainPage = ({ setIsLogIn }) => {
     }
     fetch("http://localhost:3333/api/reports", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     })
-      .then(response => response.json())
-      .then(data => setReports(data));
-
+      .then((response) => response.json())
+      .then((data) => setReports(data));
   }, [setIsLogIn]);
-  console.log(reports)
+  console.log(reports);
 
   return (
     <Fragment>
       <Header setLeadToReport={setLeadToReport} />
       {leadToReport ? (
-        <CandidateReport catchId={catchId} candidates={candidates} />
+        <CandidateReport
+          catchId={catchId}
+          candidates={candidates}
+          reports={reports}
+          catchId={catchId}
+        />
       ) : (
-        <Candidates setCatchId={setCatchId} candidates={candidates} setIsLogIn={setIsLogIn} setLeadToReport={setLeadToReport} />
+        <Candidates
+          setCatchId={setCatchId}
+          candidates={candidates}
+          setIsLogIn={setIsLogIn}
+          setLeadToReport={setLeadToReport}
+        />
       )}
       <Footer />
     </Fragment>

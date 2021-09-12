@@ -1,0 +1,14 @@
+.content-table {
+  width: 93%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+thead {
+  margin-top: 20px;
+  background-color: #e7d7c1;
+}
+
+.row {
+  padding-left: 20px;
+}
