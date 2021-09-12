@@ -42,7 +42,7 @@ export const MainPage = ({ setIsLogIn }) => {
 
   return (
     <Fragment>
-      <Header setLeadToReport={setLeadToReport} />
+      <Header setLeadToReport={setLeadToReport} setIsLogIn={setIsLogIn}/>
       {leadToReport ? (
         <CandidateReport
           catchId={catchId}
