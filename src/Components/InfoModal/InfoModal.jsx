@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 import './InfoModal.css';
 
@@ -21,7 +21,7 @@ export default function InfoModal({ reports, catchId, reportId }) {
     }
 
 
-    modalComponent = reports.map((report, index) => {
+    modalComponent = reports.map((report) => {
         if (catchReportId === report.id) {
             const interviewDate = new Date(report.interviewDate);
             const y = interviewDate.getFullYear();
@@ -34,7 +34,7 @@ export default function InfoModal({ reports, catchId, reportId }) {
                         <img src="./Webp.png" alt="bla" onClick={handleClose} className="img" />
                     </Modal.Header>
                     <Modal.Body>
-                        <div className="col">
+                        <div className="col modalClass">
                             <div className="details">
                                 <div className="coll">
                                     <p>Company</p>
@@ -64,10 +64,11 @@ export default function InfoModal({ reports, catchId, reportId }) {
             )
 
         }
+        return null;
     })
     return (
         <>
-            <div onClick={handleShow}><i class="material-icons">visibility</i>
+            <div onClick={handleShow}><i className="material-icons eye">visibility</i>
             </div>
             {modalComponent}
         </>

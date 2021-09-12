@@ -19,7 +19,7 @@ export const Header = ({ setLeadToReport, setIsLogIn }) => {
     window.location.reload(true);
   };
   return (
-    <nav className="navbar navbar-dark bg-dark paddingNav">
+    <nav className="navbar navbar-dark paddingNav">
       <div className="container-fluid">
         <h1 className="navbar-brand">Interviews Reports</h1>
         <form className="d-flex">

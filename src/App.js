@@ -27,9 +27,6 @@ function App() {
     }
   },[]);
   
-    //localStorage.clear()
-  // console.log(localStorage.getItem("token"));
-  // console.log(isLogIn)
  
   return (
     <Fragment>
