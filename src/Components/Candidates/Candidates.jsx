@@ -1,7 +1,7 @@
 import React from "react";
 import "./Candidates.css";
 import { Search } from "../Search/Search";
-import { useEffect, useState } from "react";
+
 import { CandidateCard } from "../CandidateCard/CandidateCard";
 import { Fragment } from "react/cjs/react.production.min";
 

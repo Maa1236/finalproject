@@ -1,10 +1,17 @@
+
 .paddingNav {
     padding-left: 6%;
     padding-right: 6%;
+    background-color:#CD9D8D;
 }
 
 .paddingNav button{
+    background-color: #E2DDC7;
+    
     margin-left:15px;
+}
+.paddingNav button:hover{
+    background-color: #AAAF6B;
 }
 
 .youSureBubble {
