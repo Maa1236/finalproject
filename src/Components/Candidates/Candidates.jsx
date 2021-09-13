@@ -1,6 +1,7 @@
 import React from "react";
 import "./Candidates.css";
 import { Search } from "../Search/Search";
+import { useState } from "react";
 
 import { CandidateCard } from "../CandidateCard/CandidateCard";
 import { Fragment } from "react/cjs/react.production.min";
@@ -26,6 +27,7 @@ export const Candidates = ({ setIsLogIn, setLeadToReport, candidates, setCatchId
         return (
 
             <CandidateCard
+                setLeadToReport={setLeadToReport}
                 key={index}
                 setCatchId={setCatchId}
                 candidate={candidate} />
