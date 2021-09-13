@@ -3,10 +3,10 @@ import "./Login.css";
 export const Login = ({ setInputEmail, setInputPassword,letMeIn }) => {
     
   return (
-    <div className="container">
+    <div className="container mainMain">
       <div className="row">
         <div className="col-md-4 offset-md-4">
-          <div className="login-form bg-light mt-4 p-4">
+          <div className="login-form bg-light mt-4 p-4 mainCont">
             <form action="" method="">
               <h4 className="text-center">Login</h4>
               <div className="col-12 row g-3 nasaKlasa">

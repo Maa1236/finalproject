@@ -1,18 +1,23 @@
-
 .reportHeader {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   padding: 12px 0px;
   align-items: center;
+  width: 86%;
+  margin: 10px auto;
 }
-.reportHeader .infoDiv >*{
-padding-left: 15px;
-  }
+.reportHeader .infoDiv {
+  flex-grow: 1;
+}
+.reportHeader .infoDiv > * {
+  padding-left: 15px;
+}
 .reportHeader img {
-  height: 220px;
-  border:1px solid rgb(199, 196, 196);
+  height: 210px;
+  width: 210px;
+  /* border:1px solid rgb(255, 255, 255); */
 }
 .reportHeader p {
   word-wrap: break-word;
@@ -33,18 +38,13 @@ padding-left: 15px;
     width: 50%;
   }
   .reportHeader .infoDiv .birthEducation {
-    border-left:1px solid rgb(173, 173, 173) ;
-  }
-  .reportHeader img {
-    width: 25%;
+    border-left: 2px solid rgb(255, 255, 255);
   }
 }
 
 /* Media Query for Tablets Ipads portrait mode,low resolution  Tablets, Ipads*/
 @media (min-width: 481px) and (max-width: 1023px) {
-
   .reportHeader .infoDiv {
-    
     height: 55%;
   }
   .reportHeader .infoDiv > * {
@@ -53,25 +53,22 @@ padding-left: 15px;
     width: 100%;
   }
   .reportHeader .infoDiv .nameEmail {
-    border-bottom:1px solid rgb(173, 173, 173) ;
-  }
-  .reportHeader img {
-    width: 330px;
+    border-bottom: 1px solid rgb(173, 173, 173);
   }
 }
 
 /* Media Query for Mobile Devices */
 @media (max-width: 480px) {
-    .reportHeader {
-        display: block;
-      }
-      .reportHeader .infoDiv {
-width:100%;
-      }
-      .reportHeader .infoDiv > * {
-        width: 100%;
-      }
-      .reportHeader img {
-        width:100%;
-      }
+  .reportHeader {
+    display: block;
+  }
+  .reportHeader .infoDiv {
+    width: 100%;
+  }
+  .reportHeader .infoDiv > * {
+    width: 100%;
+  }
+  .reportHeader img {
+    margin: 0px auto;
+  }
 }

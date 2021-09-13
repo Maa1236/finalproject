@@ -1,3 +1,13 @@
+.mainMain{
+    margin-top: 100px;
+}
+.mainCont{
+    border-radius: 4px;
+    box-shadow: -3px 0px 57px -2px rgba(80, 80, 80, 0.68);
+    -webkit-box-shadow: -3px 0px 57px -2px rgba(71, 71, 71, 0.68);
+    -moz-box-shadow: -3px 0px 57px -2px rgba(58, 58, 58, 0.68);
+}
+
 .nasaKlasa {
     margin-bottom: 15px;
 }

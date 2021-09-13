@@ -9,7 +9,7 @@ import './InfoModal.css';
 
 
 export default function InfoModal({ reports, catchId, reportId }) {
-    console.log(reportId)
+    
 
     var modalComponent;
     const [show, setShow] = useState(false);
