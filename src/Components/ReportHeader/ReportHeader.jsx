@@ -25,7 +25,7 @@ export const ReportHeader = ({ candidates, catchId }) => {
               <p>{candidat.email}</p>
             </div>
             <div className="birthEducation">
-              <p>{`Date of birth:${d}.${m}.${y}`}</p>
+              <p>{`Date of birth: ${d}.${m}.${y}`}</p>
               <p>{candidat.education}</p>
             </div>
           </div>

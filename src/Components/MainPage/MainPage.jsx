@@ -22,8 +22,10 @@ export const MainPage = ({ setIsLogIn, setIsLoading, isLoading }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => setCandidates(data));
-      setIsLoading(false);
+      .then((data) => {
+        setCandidates(data);
+        setIsLoading(false);
+      });
   }, [setIsLogIn, setIsLoading]);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export const MainPage = ({ setIsLogIn, setIsLoading, isLoading }) => {
     })
       .then((response) => response.json())
       .then((data) => setReports(data));
-      setIsLoading(false);
+    setIsLoading(false);
   }, [setIsLogIn, setIsLoading]);
 
   if (isLoading) return <Loader />;

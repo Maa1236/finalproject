@@ -1,59 +1,58 @@
-
 .modalClass .coll {
-display: flex;
-flex-direction: column;
-flex: 1;
-padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 10px;
 }
 
 .modalClass .col1 {
-display: flex;
-flex-direction: column;
-flex: 1;
-padding-left: 60px;
-padding-bottom: 30px;
-
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 60px;
+  padding-bottom: 30px;
 }
 
 .col {
-    display: flex;
-    flex-direction: row;
-    
+  display: flex;
+  flex-direction: row;
 }
 
 .modalClass p {
-    font-size: 16px;
-    margin: 0px;
-    padding: 0px;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .modalClass h3 {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
-
-.img{
-    box-shadow: 2px 4px 4px rgba(109, 103, 103, 0.83);
-    border-radius:50%;
+.img {
+  box-shadow: 2px 4px 4px rgba(109, 103, 103, 0.83);
+  border-radius: 50%;
+  background-color: white;
 }
 
-.img:hover{
-    cursor: pointer;
+.img:hover {
+  cursor: pointer;
 }
 .details {
-    padding-right: 120px;
-
+  padding-right: 120px;
 }
 
-.eye:hover{
-    cursor: pointer;
-    color: white;
+.eye:hover {
+  cursor: pointer;
+  color: white;
 }
 
+.eyeDiv {
+  padding: 0;
+  width: fit-content;
+}
 
-
-
-
-
-
+.bgColHeader {
+  background-color: rgb(205, 157, 141);
+  color: white;
+}
