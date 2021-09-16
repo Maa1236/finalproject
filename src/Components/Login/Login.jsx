@@ -1,11 +1,12 @@
+import React from "react";
 import "./Login.css";
 
 export const Login = ({ setInputEmail, setInputPassword, letMeIn }) => {
   return (
-    <div class="newClassForCss" onclick="onclick">
-      <div class="top"></div>
-      <div class="bottom"></div>
-      <div class="center">
+    <div className="newClassForCss" onclick="onclick">
+      <div className="top"></div>
+      <div className="bottom"></div>
+      <div className="center">
         <h2>Please Sign In</h2>
         <input
           type="email"

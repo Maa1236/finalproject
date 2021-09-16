@@ -1,6 +1,9 @@
 .inputWithoutBorder {
     border: none;
     border-radius: 10px;
+    background-color: transparent;
+    resize: none;
+    outline: none;
 }
 
 .formBorder {

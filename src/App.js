@@ -1,52 +1,55 @@
 import "./App.css";
 import { Services } from "./Services/Services";
-import { Fragment, useEffect, useState } from "react";
+import { useState, useEffect  } from "react";
 import { Login } from "./Components/Login/Login";
 import { MainPage } from "./Components/MainPage/MainPage";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { CandidateReport } from "./Components/CandidateReport/CandidateReport";
+import { Loader } from "../src/Components/Loader/Loader";
 
 function App() {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  const [isLogIn, setIsLogIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [catchId, setCatchId] = useState(undefined);
+  
+  let history = useHistory();
 
   async function letMeIn(event) {
     event.preventDefault();
     let data = await Services(inputEmail, inputPassword);
     if (data.accessToken) {
       localStorage.setItem("token", data.accessToken);
-      setIsLogIn(true);
+      history.push('/candidates')
     }
   }
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsLogIn(true);
-    }
-  }, []);
+  let token = localStorage.getItem("token");
+  if (!token) {
+    history.push("/login");
+  }
 
   return (
-    <Fragment>
-      {isLogIn && (
+    <Switch>
+      <Route exact path="/candidates">
         <MainPage
           isLoading={isLoading}
           setIsLoading={setIsLoading}
-          setIsLogIn={setIsLogIn}
+          setCatchId={setCatchId}
+          catchId={catchId}
+          
         />
-      )}
-      {!isLogIn && (
+      </Route>
+      <Route exact path={`/candidates/${catchId}`} component={CandidateReport}/>
+      <Route exact path="/login">
         <Login
           setInputEmail={setInputEmail}
           setInputPassword={setInputPassword}
           letMeIn={letMeIn}
         />
-      )}
-      {/* {isLogIn ? <MainPage setIsLogIn={setIsLogIn} /> : <Login 
-      setInputEmail={setInputEmail}
-      setInputPassword={setInputPassword}
-      letMeIn={letMeIn}
-      />}  */}
-    </Fragment>
+      </Route>
+      <Redirect from="" to="/candidates"/>
+    </Switch>
   );
 }
 

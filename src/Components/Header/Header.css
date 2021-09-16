@@ -1,56 +1,60 @@
-
 .paddingNav {
-    padding-left: 6%;
-    padding-right: 6%;
-    background-color:#CD9D8D;
+  padding-left: 6%;
+  padding-right: 6%;
+  background-color: #cd9d8d;
 }
 
-.paddingNav button{
-    background-color: #E2DDC7;
-    
-    margin-left:15px;
+.paddingNav button {
+  background-color: #e2ddc7;
+
+  margin-left: 15px;
 }
-.paddingNav button:hover{
-    background-color: #AAAF6B;
+.paddingNav button:hover {
+  background-color: #aaaf6b;
+}
+.paddingNav .linkHover:hover {
+  background-color: #aaaf6b;
+}
+.paddingNav .linkHover {
+  background-color: #e2ddc7;
 }
 
 .youSureBubble {
-    display: none;
-	position: absolute;
-    top:50px;
-    right:8%;
-    z-index: 10;
-	max-width: 30em;
-	background-color: #fff;
-	padding: 5px 10px;
-	font-size: 1.25em;
-	border-radius: 1rem;
-    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 8%;
+  z-index: 10;
+  max-width: 30em;
+  background-color: #fff;
+  padding: 5px 10px;
+  font-size: 1.25em;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
+    0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
 }
 
 .youSureBubble::before {
-	content: '';
-	position: absolute;
-	bottom: 100%;
-	right: 1.5em;
-	border: .75rem solid transparent;
-	border-top: none;
-	border-bottom-color: #fff;
-	filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 1.5em;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
 }
-.youSureBubble p{
-    width: 100%;
-    text-align: center;
+.youSureBubble p {
+  width: 100%;
+  text-align: center;
 }
-.yesNoButtonDiv{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    padding: 0px;
+.yesNoButtonDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
 }
-.yesNoButtonDiv button{
-    margin:0px 7px;
-    margin-bottom: 5px;
+.yesNoButtonDiv button {
+  margin: 0px 7px;
+  margin-bottom: 5px;
 }
-
-
