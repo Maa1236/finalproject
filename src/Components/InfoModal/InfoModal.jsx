@@ -22,7 +22,7 @@ export default function InfoModal({ reports, reportsId }) {
       const m = interviewDate.getMonth() + 1;
       const d = interviewDate.getDate();
       return (
-        <Modal show={show} onHide={handleClose} centered size="lg">
+        <Modal key={parseInt(report.id)} show={show} onHide={handleClose} centered size="lg">
           <Modal.Header className="bgColHeader">
             <Modal.Title>{report.candidateName} </Modal.Title>
             <img
@@ -66,9 +66,9 @@ export default function InfoModal({ reports, reportsId }) {
   });
   return (
     <>
-      <div onClick={handleShow} className="eyeDiv">
+      <td onClick={handleShow} className="eyeDiv">
         <i className="material-icons eye">visibility</i>
-      </div>
+      </td>
       {modalComponent}
     </>
   );

@@ -25,7 +25,7 @@ export const MainPage = ({ setIsLoading, isLoading, setCatchId, catchId }) => {
         setIsLoading(false);
       });
   }, [setIsLoading]);
-console.log(candidates)
+
   if (candidates === "jwt expired" || candidates === "jwt malformed" || candidates === "invalid token") {
     localStorage.clear()
     history.push('/login')
