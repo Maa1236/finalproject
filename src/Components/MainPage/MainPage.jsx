@@ -1,64 +1,48 @@
 import React, { Fragment, useState, useEffect } from "react";
+
 import "./MainPage.css";
 import { Header } from "../Header/Header";
 import { Candidates } from "../Candidates/Candidates";
 import { Footer } from "../Footer/Footer";
-import { CandidateReport } from "../CandidateReport/CandidateReport";
 import { Loader } from "../Loader/Loader";
+import { useHistory } from "react-router-dom";
 
-export const MainPage = ({ setIsLogIn, setIsLoading, isLoading }) => {
-  const [leadToReport, setLeadToReport] = useState(false);
+export const MainPage = ({ setIsLoading, isLoading, setCatchId, catchId }) => {
+
+  let history = useHistory();
   const [candidates, setCandidates] = useState([]);
-  const [reports, setReports] = useState([]);
-  const [catchId, setCatchId] = useState(undefined);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsLogIn(true);
-    }
+    
     fetch("http://localhost:3333/api/candidates", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
       .then((response) => response.json())
-      .then((data) => setCandidates(data));
-      setIsLoading(false);
-  }, [setIsLogIn, setIsLoading]);
+      .then((data) => {
+        setCandidates(data);
+        setIsLoading(false);
+      });
+  }, [setIsLoading]);
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsLogIn(true);
-    }
-    fetch("http://localhost:3333/api/reports", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setReports(data));
-      setIsLoading(false);
-  }, [setIsLogIn, setIsLoading]);
+  if (candidates === "jwt expired" || candidates === "jwt malformed" || candidates === "invalid token") {
+    localStorage.clear()
+    history.push('/login')
+    window.location.reload(true)
+}
 
   if (isLoading) return <Loader />;
 
   return (
     <Fragment>
-      <Header setLeadToReport={setLeadToReport} setIsLogIn={setIsLogIn} />
-      {leadToReport ? (
-        <CandidateReport
-          catchId={catchId}
-          candidates={candidates}
-          reports={reports}
-        />
-      ) : (
+      <Header 
+      />
         <Candidates
           setCatchId={setCatchId}
           candidates={candidates}
-          setIsLogIn={setIsLogIn}
-          setLeadToReport={setLeadToReport}
+          catchId={catchId}
         />
-      )}
       <Footer />
     </Fragment>
   );

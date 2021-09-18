@@ -1,19 +1,19 @@
 import './CandidateCard.css';
+import React from "react";
+import { Link } from 'react-router-dom';
 
-export const CandidateCard = ({ candidate, setLeadToReport, setCatchId }) => {
 
-    const showMeUserReport = () => {
-        setCatchId(candidate.id)
-        setLeadToReport(true);
-    }
+export const CandidateCard = ({ candidate }) => {
 
     return (
-        <div className="singleElUserCard" key={candidate.id} onClick={showMeUserReport}>
-            <img src="./avatar.png" alt="bla" />
-            <p className="firstName">{candidate.name} </p>
-            <div className="info">
-                <p>{candidate.email} </p>
+        <Link to={`/candidates/${candidate.id}`} className="aLink" >
+            <div className="singleElUserCard" key={candidate.id} >
+                <img src="./avatar.png" alt="bla" />
+                <p className="firstName">{candidate.name} </p>
+                <div className="info">
+                    <p>{candidate.email} </p>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
