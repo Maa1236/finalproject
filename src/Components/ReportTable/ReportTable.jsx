@@ -3,11 +3,12 @@ import { Table } from "react-materialize";
 import "./ReportTable.css";
 import InfoModal from "../InfoModal/InfoModal";
 
-export const ReportTable = ({ reports, catchId }) => {
+export const ReportTable = ({ reports, id}) => {
   let component;
-
+  
   component = reports.map((report) => {
-    if (catchId === report.candidateId) {
+   
+    if (parseInt(report.candidateId) === parseInt(id)) {
       const interviewDate = new Date(report.interviewDate);
       const y = interviewDate.getFullYear();
       const m = interviewDate.getMonth() + 1;
@@ -17,7 +18,8 @@ export const ReportTable = ({ reports, catchId }) => {
           <td className="cmpName">{report.companyName}</td>
           <td>{`${d}.${m}.${y}`}</td>
           <td>{report.status}</td>
-          <InfoModal reports={reports} catchId={catchId} reportId={report.id} />
+          <InfoModal reports={reports} id={id} reportsId={report.id} />
+         
         </tr>
       );
     }
@@ -25,7 +27,7 @@ export const ReportTable = ({ reports, catchId }) => {
   });
   return (
     <div>
-      <h5 className="reportsTitle">Reports</h5>
+      <h5 className="reportsTitle">reports</h5>
       <Table className="content-table">
         <thead>
           <tr>

@@ -9,10 +9,11 @@ export const Candidates = ({
   setLeadToReport,
   candidates,
   setCatchId,
+  catchId
 }) => {
   let history = useHistory();
   const [search, setSearchTerm] = useState("");
-  console.log(candidates);
+
   if (candidates === "jwt expired") {
     localStorage.clear();
     history.push('/login')
@@ -34,6 +35,7 @@ export const Candidates = ({
           key={index}
           setCatchId={setCatchId}
           candidate={candidate}
+          catchId={catchId}
         />
       );
     });

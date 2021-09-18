@@ -35,13 +35,13 @@ export const Header = () => {
           >
             <p>Are you sure?</p>
             <div className="yesNoButtonDiv">
-              <button className="btn btn-light " type="button" onClick={handleCloseBubble}>
+              <button className="btn btn-light yesNo" type="button" onClick={handleCloseBubble}>
                 No
               </button>
               <Link
                 onClick={logOut}
                 to="/login"
-                className="btn btn-light linkHover"
+                className="btn btn-light linkHover yesNo"
               >
                 Yes
               </Link>

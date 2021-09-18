@@ -3,7 +3,7 @@ import "./Login.css";
 
 export const Login = ({ setInputEmail, setInputPassword, letMeIn }) => {
   return (
-    <div className="newClassForCss" onclick="onclick">
+    <div className="newClassForCss" click="onclick">
       <div className="top"></div>
       <div className="bottom"></div>
       <div className="center">

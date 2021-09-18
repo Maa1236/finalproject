@@ -7,8 +7,11 @@
   align-items: center;
   padding-top: 10px;
   border-radius: 4px;
+}
 
-  
+.aLink {
+  text-decoration: none;
+  margin: 10px 3%;
 }
 
 .singleElUserCard :hover {
@@ -25,6 +28,7 @@
 .singleElUserCard .info p {
   word-wrap: break-word;
   font-size: 16px;
+  color: #000000;
 }
 .singleElUserCard .firstName {
   color: rgb(14, 0, 0);
