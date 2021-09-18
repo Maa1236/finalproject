@@ -10,7 +10,7 @@ import { CandidateReport } from "./Components/CandidateReport/CandidateReport";
 function App() {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [catchId, setCatchId] = useState(undefined);
   let history = useHistory();
 
