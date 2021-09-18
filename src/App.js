@@ -1,10 +1,11 @@
 import "./App.css";
 import { Services } from "./Services/Services";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Login } from "./Components/Login/Login";
 import { MainPage } from "./Components/MainPage/MainPage";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { CandidateReport } from "./Components/CandidateReport/CandidateReport";
+import {ReportsAdministration} from "./Components/ReportsAdministration/ReportsAdministration"
 
 
 function App() {
@@ -12,8 +13,44 @@ function App() {
   const [inputPassword, setInputPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [catchId, setCatchId] = useState(undefined);
+  const [reports, setReports] = useState([]);
   let history = useHistory();
 
+
+  useEffect(() => {
+    console.log("use efect odradio")
+    fetch("http://localhost:3333/api/reports", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }) 
+      .then((response) =>  response.json())
+      .then((reporti) => { 
+        if(typeof reporti !== "string") {
+    
+            return reporti.map((user) => {
+              return {
+                id: user.id,
+                candidateId: user.candidateId,
+                candidateName: user.candidateName,
+                companyId: user.companyId,
+                companyName: user.companyName,
+                interviewDate: user.interviewDate,
+                phase: user.phase,
+                status: user.status,
+                note: user.note,
+              }
+            })
+          } else {
+            localStorage.clear();
+            history.push('/login')
+          }
+      })
+      .then((data) => setReports(data))
+  }, [history]);
+
+console.log("51. linija u appu, reports:")
+console.log(reports)
 
   async function letMeIn(event) {
     event.preventDefault();
@@ -39,8 +76,13 @@ function App() {
           catchId={catchId}
         />
       </Route>
+
       <Route exact path="/candidates/:id">
-        <CandidateReport />
+        <CandidateReport reports={reports}/>
+      </Route>
+
+      <Route exact path="/reportsAdministration">
+        <ReportsAdministration reports={reports} />
       </Route>
 
       <Route exact path="/login">
