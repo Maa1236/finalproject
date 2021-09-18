@@ -5,8 +5,11 @@ import { Header } from "../Header/Header";
 import { Candidates } from "../Candidates/Candidates";
 import { Footer } from "../Footer/Footer";
 import { Loader } from "../Loader/Loader";
+import { useHistory } from "react-router-dom";
 
 export const MainPage = ({ setIsLoading, isLoading, setCatchId, catchId }) => {
+
+  let history = useHistory();
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
@@ -22,7 +25,12 @@ export const MainPage = ({ setIsLoading, isLoading, setCatchId, catchId }) => {
         setIsLoading(false);
       });
   }, [setIsLoading]);
-
+console.log(candidates)
+  if (candidates === "jwt expired" || candidates === "jwt malformed" || candidates === "invalid token") {
+    localStorage.clear()
+    history.push('/login')
+    window.location.reload(true)
+}
 
   if (isLoading) return <Loader />;
 

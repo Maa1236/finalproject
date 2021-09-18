@@ -2,8 +2,45 @@ import React from "react";
 import { Table } from "react-materialize";
 import "./ReportTable.css";
 import InfoModal from "../InfoModal/InfoModal";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-export const ReportTable = ({ reports, id}) => {
+export const ReportTable = ({id}) => {
+
+  const [reports, setReports] = useState([]);
+  let history = useHistory();
+
+  useEffect(() => {
+    fetch("http://localhost:3333/api/reports", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }) 
+      .then((response) =>  response.json())
+      .then((reporti) => { 
+        if(typeof reporti !== "string") {
+    
+            return reporti.map((user) => {
+              return {
+                id: user.id,
+                candidateId: user.candidateId,
+                candidateName: user.candidateName,
+                companyId: user.companyId,
+                companyName: user.companyName,
+                interviewDate: user.interviewDate,
+                phase: user.phase,
+                status: user.status,
+                note: user.note,
+              }
+            })
+          } else {
+            localStorage.clear();
+            history.push('/login')
+          }
+      })
+      .then((data) => setReports(data))
+  }, [history]);
+
   let component;
   
   component = reports.map((report) => {

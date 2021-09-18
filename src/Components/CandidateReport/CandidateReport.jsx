@@ -9,7 +9,7 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 
 
-export const CandidateReport = ({ catchId, reports }) => {
+export const CandidateReport = ({ catchId }) => {
 
   const id = useParams();
   const [user, setUser] = useState({});
@@ -29,7 +29,7 @@ export const CandidateReport = ({ catchId, reports }) => {
     <Fragment>
       <Header />
       <ReportHeader user={user} />
-      <ReportTable reports={reports} id={id.id} />
+      <ReportTable id={id.id} />
       <Footer />
     </Fragment>
   );
