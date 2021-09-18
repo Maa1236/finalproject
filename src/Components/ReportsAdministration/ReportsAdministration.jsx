@@ -1,18 +1,27 @@
 import React from "react";
 import { Table } from "react-materialize";
-import "./ReportTable.css";
 import InfoModal from "../InfoModal/InfoModal";
-// import { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { SearchAdministrationReport } from "../SearchAdministrationReport/SearchAdministrationReport";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
-export const ReportTable = ({id,reports}) => {
+export const ReportsAdministration = ({ id, reports }) => {
+  const [adminSearch, setAdminSearch] = useState("");
 
-  
-  let component;
-  
-  component = reports.map((report) => {
-   
-    if (parseInt(report.candidateId) === parseInt(id)) {
+  let mappingTheCompanies = reports
+    .filter((rep) => {
+      let result = null;
+      if (adminSearch === "") {
+        result = rep;
+      } else if (
+        rep.companyName.toLowerCase().includes(adminSearch.toLowerCase())
+      ) {
+        result = rep;
+      }
+      return result;
+    })
+    .map((report) => {
       const interviewDate = new Date(report.interviewDate);
       const y = interviewDate.getFullYear();
       const m = interviewDate.getMonth() + 1;
@@ -23,15 +32,14 @@ export const ReportTable = ({id,reports}) => {
           <td>{`${d}.${m}.${y}`}</td>
           <td>{report.status}</td>
           <InfoModal reports={reports} id={id} reportsId={report.id} />
-         
         </tr>
       );
-    }
-    return null;
-  });
+    });
+
   return (
     <div>
-      <h5 className="reportsTitle">reports</h5>
+      <Header />
+      <SearchAdministrationReport setAdminSearch={setAdminSearch} />
       <Table className="content-table">
         <thead>
           <tr>
@@ -41,8 +49,9 @@ export const ReportTable = ({id,reports}) => {
             <th></th>
           </tr>
         </thead>
-        <tbody>{component}</tbody>
+        <tbody>{mappingTheCompanies}</tbody>
       </Table>
+      <Footer />
     </div>
   );
 };
