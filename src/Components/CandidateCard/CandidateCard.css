@@ -1,7 +1,6 @@
 .singleElUserCard {
   background-color: rgb(235, 250, 244);
   width: 330px;
-  margin: 10px 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +11,7 @@
 .aLink {
   text-decoration: none;
   margin: 10px 3%;
+  padding: 0px;
 }
 
 .singleElUserCard :hover {
