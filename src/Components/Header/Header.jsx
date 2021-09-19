@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const Header = () => {
   let history = useHistory();
-  let location = useLocation();
+  let local = useLocation();
 
 
   const [show, setShow] = useState(false);
@@ -20,17 +20,23 @@ export const Header = () => {
 
 
   const logOut = () => {
+    
     localStorage.clear();
   };
 
+  const goToAdmin = () => {
+    history.push("/reportsAdministration")
+    history.go('/reportsAdministration');
+   
+  }
+
   var button = null;
-  if (location.pathname === "/candidates") {
+  if (local.pathname === "/candidates") {
     button = (
-      <Link to="/reportsAdministration" className="btn btn-light linkHover">
-        Administration report
-      </Link>
+     
+      <button onClick={goToAdmin} className="btn btn-light linkHover">Administration Report</button>
     );
-  } else if (location.pathname === "/reportsAdministration") {
+  } else if (local.pathname === "/reportsAdministration") {
     button = (
       <button className="btn btn-light linkHover" onClick={handleShowButton}>
         Candidates
@@ -41,9 +47,8 @@ export const Header = () => {
       <button className="btn btn-light linkHover" onClick={handleShowButton} style= {{"margin-right": "15px"}}>
         Candidates
       </button>
-      <Link to="/reportsAdministration" className="btn btn-light linkHover">
-        Administration report
-      </Link>
+    
+      <button onClick={goToAdmin} className="btn btn-light linkHover">Administration Report</button>
     </div>;
   }
   return (
