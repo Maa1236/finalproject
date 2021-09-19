@@ -4,6 +4,7 @@ import { Header } from "../Header/Header";
 import { Candidates } from "../Candidates/Candidates";
 import { Footer } from "../Footer/Footer";
 import { useHistory } from "react-router-dom";
+import { CandidatesFetch } from "../../Services/Services";
 
 export const MainPage = ({ setIsLoading, setCatchId, catchId }) => {
 
@@ -12,13 +13,7 @@ export const MainPage = ({ setIsLoading, setCatchId, catchId }) => {
 
   useEffect(() => {
     
-    fetch("http://localhost:3333/api/candidates", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+   CandidatesFetch().then((data) => {
         setCandidates(data);
         setIsLoading(false);
       });
