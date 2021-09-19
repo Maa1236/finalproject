@@ -1,6 +1,6 @@
 const url = "http://localhost:3333/login";
 
-export async function Services(emailValue,passwordValue) {
+export async function Services(emailValue, passwordValue) {
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -17,14 +17,22 @@ export async function Services(emailValue,passwordValue) {
 
 export const CandidatesFetch = () => {
   return fetch("http://localhost:3333/api/candidates", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-    .then((result) => {
-      return result.json();
-    });
-  
-}
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }).then((result) => {
+    return result.json();
+  });
+};
+
+export const ReportIDFetch = (id) => {
+  return fetch(`http://localhost:3333/api/candidates/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }).then((response) => {
+    return response.json();
+  });
+};
 
 

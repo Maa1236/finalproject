@@ -6,19 +6,17 @@ import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { CandidateReport } from "./Components/CandidateReport/CandidateReport";
 import { Loader } from "./Components/Loader/Loader";
 
-
 function App() {
-
   const [isLoading, setIsLoading] = useState(true);
-  const [catchId, setCatchId] = useState(undefined);
+
   let history = useHistory();
 
   useEffect(() => {
-    setIsLoading(false)
-  }, [])
+    setIsLoading(false);
+  }, []);
 
   let token = localStorage.getItem("token");
- 
+
   if (!token) {
     history.push("/login");
   }
@@ -28,12 +26,9 @@ function App() {
   return (
     <Switch>
       <Route exact path="/candidates">
-        <MainPage
-          setIsLoading={setIsLoading}
-          setCatchId={setCatchId}
-          catchId={catchId}
-        />
+        <MainPage setIsLoading={setIsLoading} />
       </Route>
+
       <Route exact path="/candidates/:id">
         <CandidateReport />
       </Route>
@@ -45,6 +40,5 @@ function App() {
     </Switch>
   );
 }
-
 
 export default App;

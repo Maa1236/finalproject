@@ -6,34 +6,31 @@ import { Footer } from "../Footer/Footer";
 import { useHistory } from "react-router-dom";
 import { CandidatesFetch } from "../../Services/Services";
 
-export const MainPage = ({ setIsLoading, setCatchId, catchId }) => {
-
+export const MainPage = ({ setIsLoading }) => {
   let history = useHistory();
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
-    
-   CandidatesFetch().then((data) => {
-        setCandidates(data);
-        setIsLoading(false);
-      });
+    CandidatesFetch().then((data) => {
+      setCandidates(data);
+      setIsLoading(false);
+    });
   }, [setIsLoading]);
 
-  if (candidates === "jwt expired" || candidates === "jwt malformed" || candidates === "invalid token") {
-    localStorage.clear()
-    history.push('/login')
-    window.location.reload(true)
-}
+  if (
+    candidates === "jwt expired" ||
+    candidates === "jwt malformed" ||
+    candidates === "invalid token"
+  ) {
+    localStorage.clear();
+    history.push("/login");
+    window.location.reload(true);
+  }
 
   return (
     <Fragment>
-      <Header 
-      />
-        <Candidates
-          setCatchId={setCatchId}
-          candidates={candidates}
-          catchId={catchId}
-        />
+      <Header />
+      <Candidates candidates={candidates} />
       <Footer />
     </Fragment>
   );

@@ -5,18 +5,13 @@ import { useState, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import { CandidateCard } from "../CandidateCard/CandidateCard";
 
-export const Candidates = ({ 
-  setLeadToReport,
-  candidates,
-  setCatchId,
-  catchId
-}) => {
+export const Candidates = ({ candidates }) => {
   let history = useHistory();
   const [search, setSearchTerm] = useState("");
 
   if (candidates === "jwt expired") {
     localStorage.clear();
-    history.push('/login')
+    history.push("/login");
   }
   let mappingTheCandidates = candidates
     .filter((candid) => {
@@ -29,15 +24,7 @@ export const Candidates = ({
       return result;
     })
     .map((candidate, index) => {
-      return (
-        <CandidateCard
-          setLeadToReport={setLeadToReport}
-          key={index}
-          setCatchId={setCatchId}
-          candidate={candidate}
-          catchId={catchId}
-        />
-      );
+      return <CandidateCard key={index} candidate={candidate} />;
     });
 
   return (
