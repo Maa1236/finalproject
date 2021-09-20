@@ -6,6 +6,7 @@ import { MainPage } from "./Components/MainPage/MainPage";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { CandidateReport } from "./Components/CandidateReport/CandidateReport";
 import {ReportsAdministration} from "./Components/ReportsAdministration/ReportsAdministration"
+import { useCallback } from 'react'
 
 
 function App() {
@@ -14,11 +15,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [catchId, setCatchId] = useState(undefined);
   const [reports, setReports] = useState([]);
+ 
   let history = useHistory();
 
-
-  useEffect(() => {
-    console.log("use efect odradio")
+  
+  const getReports = useCallback(() => {
     fetch("http://localhost:3333/api/reports", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -46,11 +47,11 @@ function App() {
             history.push('/login')
           }
       })
-      .then((data) => setReports(data))
-  }, [history]);
+      .then((data) => setReports(data))}, [history])
 
-console.log("51. linija u appu, reports:")
-console.log(reports)
+      useEffect(() => {
+        getReports()
+      }, [history, getReports]);
 
   async function letMeIn(event) {
     event.preventDefault();
@@ -82,7 +83,7 @@ console.log(reports)
       </Route>
 
       <Route exact path="/reportsAdministration">
-        <ReportsAdministration reports={reports} />
+        <ReportsAdministration reports={reports} getReports={getReports} />
       </Route>
 
       <Route exact path="/login">
