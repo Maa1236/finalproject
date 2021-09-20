@@ -4,12 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export const Header = () => {
-  // const askMeIfIamSure = () => {
-  //   document.querySelector(".youSureBubble").style.display = "block";
-  // };
-  // const notSure = () => {
-  //   document.querySelector(".youSureBubble").style.display = "none";
-  // };
+
   const [show, setShow] = useState(false);
   const handleCloseBubble = () => setShow(false);
   const handleShowBubble = () => setShow(true);

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-
 import { Modal } from "react-bootstrap";
-
 import "./InfoModal.css";
 
-export default function InfoModal({ reports, reportsId }) {
- 
-  var modalComponent;
+export default function InfoModal({
+  reportsId,
+  singleCandidateReports,
+}) {
+  let modalComponent;
   const [show, setShow] = useState(false);
   const [catchReportId, setCatchReportId] = useState("undefined");
   const handleClose = () => setShow(false);
@@ -15,14 +15,20 @@ export default function InfoModal({ reports, reportsId }) {
     setCatchReportId(reportsId);
   };
 
-  modalComponent = reports.map((report) => {
+  modalComponent = singleCandidateReports.map((report) => {
     if (parseInt(catchReportId) === parseInt(report.id)) {
       const interviewDate = new Date(report.interviewDate);
       const y = interviewDate.getFullYear();
       const m = interviewDate.getMonth() + 1;
       const d = interviewDate.getDate();
       return (
-        <Modal key={parseInt(report.id)} show={show} onHide={handleClose} centered size="lg">
+        <Modal
+          key={parseInt(report.id)}
+          show={show}
+          onHide={handleClose}
+          centered
+          size="lg"
+        >
           <Modal.Header className="bgColHeader">
             <Modal.Title>{report.candidateName} </Modal.Title>
             <img

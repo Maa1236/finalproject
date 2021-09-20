@@ -1,12 +1,15 @@
 import "./ReportHeader.css";
 import React from "react";
 
-export const ReportHeader = ({ user }) => {
 
+export const ReportHeader = ({ user}) => {
+ 
   const dateOfBirth = new Date(user.birthday);
   const y = dateOfBirth.getFullYear();
   const m = dateOfBirth.getMonth() + 1;
   const d = dateOfBirth.getDate();
+
+
 
   return (
     <div className="reportHeader">

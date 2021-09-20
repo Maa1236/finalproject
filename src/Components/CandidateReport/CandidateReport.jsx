@@ -8,22 +8,25 @@ import { useParams } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { ReportIDFetch } from "../../Services/Services";
+import { Loader } from "../Loader/Loader";
 
-export const CandidateReport = () => {
-  const id = useParams();
-  console.log(id)
+export const CandidateReport = ({ setIsLoading, isLoading }) => {
+
+  const idObject = useParams();
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    ReportIDFetch(id.id)
-      .then((data) => setUser(data));
-  }, [id.id]);
+    ReportIDFetch(idObject.id).then((data) => setUser(data));
+    setIsLoading(false);
+  }, [idObject.id, setIsLoading]);
+
+  if (isLoading) return <Loader />;
 
   return (
     <Fragment>
       <Header />
       <ReportHeader user={user} />
-      <ReportTable id={id.id} />
+      <ReportTable id={idObject.id} />
       <Footer />
     </Fragment>
   );

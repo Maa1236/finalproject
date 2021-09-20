@@ -8,7 +8,6 @@ import { Loader } from "./Components/Loader/Loader";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
   let history = useHistory();
 
   useEffect(() => {
@@ -30,7 +29,7 @@ function App() {
       </Route>
 
       <Route exact path="/candidates/:id">
-        <CandidateReport />
+        <CandidateReport setIsLoading={setIsLoading} isLoading={isLoading} />
       </Route>
 
       <Route exact path="/login">

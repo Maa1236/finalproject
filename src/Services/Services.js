@@ -36,3 +36,14 @@ export const ReportIDFetch = (id) => {
 };
 
 
+export const ReportFetch= () =>{
+  return fetch("http://localhost:3333/api/reports", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }) 
+    .then((response) => {
+      return response.json();
+    });
+}
+

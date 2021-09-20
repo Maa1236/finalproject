@@ -5,6 +5,7 @@ import { Candidates } from "../Candidates/Candidates";
 import { Footer } from "../Footer/Footer";
 import { useHistory } from "react-router-dom";
 import { CandidatesFetch } from "../../Services/Services";
+import { CheckingIsTokenValid } from "../../Services/CheckingIsTokenValid";
 
 export const MainPage = ({ setIsLoading }) => {
   let history = useHistory();
@@ -17,15 +18,7 @@ export const MainPage = ({ setIsLoading }) => {
     });
   }, [setIsLoading]);
 
-  if (
-    candidates === "jwt expired" ||
-    candidates === "jwt malformed" ||
-    candidates === "invalid token"
-  ) {
-    localStorage.clear();
-    history.push("/login");
-    window.location.reload(true);
-  }
+  CheckingIsTokenValid(candidates, history);
 
   return (
     <Fragment>
