@@ -1,59 +1,43 @@
 import "./App.css";
-import { Services } from "./Services/Services";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Login } from "./Components/Login/Login";
 import { MainPage } from "./Components/MainPage/MainPage";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { CandidateReport } from "./Components/CandidateReport/CandidateReport";
-
+import { Loader } from "./Components/Loader/Loader";
 
 function App() {
-  const [inputEmail, setInputEmail] = useState("");
-  const [inputPassword, setInputPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [catchId, setCatchId] = useState(undefined);
   let history = useHistory();
 
-
-  async function letMeIn(event) {
-    event.preventDefault();
-    let data = await Services(inputEmail, inputPassword);
-    if (data.accessToken) {
-      localStorage.setItem("token", data.accessToken);
-      history.push('/candidates')
-    }
-  }
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   let token = localStorage.getItem("token");
+
   if (!token) {
     history.push("/login");
   }
 
+  if (isLoading) return <Loader />;
+
   return (
     <Switch>
       <Route exact path="/candidates">
-        <MainPage
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          setCatchId={setCatchId}
-          catchId={catchId}
-        />
+        <MainPage setIsLoading={setIsLoading} />
       </Route>
+
       <Route exact path="/candidates/:id">
-        <CandidateReport />
+        <CandidateReport setIsLoading={setIsLoading} isLoading={isLoading} />
       </Route>
 
       <Route exact path="/login">
-        <Login
-          setInputEmail={setInputEmail}
-          setInputPassword={setInputPassword}
-          letMeIn={letMeIn}
-        />
+        <Login />
       </Route>
       <Redirect from="" to="/candidates" />
     </Switch>
   );
 }
-
 
 export default App;

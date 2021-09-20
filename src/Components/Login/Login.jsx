@@ -1,7 +1,23 @@
 import React from "react";
 import "./Login.css";
+import { useState } from "react";
+import { Services } from "../../Services/Services";
+import { useHistory } from "react-router-dom";
 
-export const Login = ({ setInputEmail, setInputPassword, letMeIn }) => {
+export const Login = () => {
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  let history = useHistory();
+
+  async function letMeIn(event) {
+    event.preventDefault();
+    let data = await Services(inputEmail, inputPassword);
+    if (data.accessToken) {
+      localStorage.setItem("token", data.accessToken);
+      history.push('/candidates')
+    }
+  }
+
   return (
     <div className="newClassForCss" click="onclick">
       <div className="top"></div>
@@ -29,4 +45,3 @@ export const Login = ({ setInputEmail, setInputPassword, letMeIn }) => {
     </div>
   );
 };
-
