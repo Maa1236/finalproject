@@ -9,16 +9,16 @@ import { Loader } from "./Components/Loader/Loader";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   let history = useHistory();
+  let token = localStorage.getItem("token");
 
   useEffect(() => {
     setIsLoading(false);
-  }, []);
+    if (!token) {
+      history.push("/login");
+    }
+  }, [history, token]);
 
-  let token = localStorage.getItem("token");
 
-  if (!token) {
-    history.push("/login");
-  }
 
   if (isLoading) return <Loader />;
 
