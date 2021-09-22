@@ -18,8 +18,6 @@ function App() {
     }
   }, [history, token]);
 
-
-
   if (isLoading) return <Loader />;
 
   return (

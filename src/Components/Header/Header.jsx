@@ -1,16 +1,17 @@
 import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 
 export const Header = () => {
-
   const [show, setShow] = useState(false);
   const handleCloseBubble = () => setShow(false);
   const handleShowBubble = () => setShow(true);
+  let history = useHistory();
 
   const logOut = () => {
     localStorage.clear();
+    history.push("/login");
   };
   return (
     <nav className="navbar navbar-dark paddingNav">
@@ -21,7 +22,11 @@ export const Header = () => {
             Candidates
           </Link>
 
-          <button className="btn btn-light " type="button" onClick={handleShowBubble}>
+          <button
+            className="btn btn-light "
+            type="button"
+            onClick={handleShowBubble}
+          >
             Log Out
           </button>
           <div
@@ -30,16 +35,19 @@ export const Header = () => {
           >
             <p>Are you sure?</p>
             <div className="yesNoButtonDiv">
-              <button className="btn btn-light yesNo" type="button" onClick={handleCloseBubble}>
+              <button
+                className="btn btn-light yesNo"
+                type="button"
+                onClick={handleCloseBubble}
+              >
                 No
               </button>
-              <Link
+              <button
                 onClick={logOut}
-                to="/login"
                 className="btn btn-light linkHover yesNo"
               >
                 Yes
-              </Link>
+              </button>
             </div>
           </div>
         </form>

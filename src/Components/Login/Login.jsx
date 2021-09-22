@@ -14,7 +14,7 @@ export const Login = () => {
     let data = await Services(inputEmail, inputPassword);
     if (data.accessToken) {
       localStorage.setItem("token", data.accessToken);
-      history.push('/candidates')
+      history.push("/candidates");
     }
   }
 

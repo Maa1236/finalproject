@@ -14,7 +14,6 @@ export const ReportTable = ({ id }) => {
   useEffect(() => {
     ReportFetch()
       .then((reportData) => {
-        
         CheckingIsTokenValid(reportData, history);
         return reportData.map((user) => {
           return {
@@ -34,7 +33,7 @@ export const ReportTable = ({ id }) => {
   }, [history]);
 
   let component;
-  let singleCandidateReports=[];
+  let singleCandidateReports = [];
   component = reports.map((report) => {
     if (parseInt(report.candidateId) === parseInt(id)) {
       singleCandidateReports.push(report);
@@ -47,7 +46,10 @@ export const ReportTable = ({ id }) => {
           <td className="cmpName">{report.companyName}</td>
           <td>{`${d}.${m}.${y}`}</td>
           <td>{report.status}</td>
-          <InfoModal singleCandidateReports={singleCandidateReports} reportsId={report.id} />
+          <InfoModal
+            singleCandidateReports={singleCandidateReports}
+            reportsId={report.id}
+          />
         </tr>
       );
     }
