@@ -1,22 +1,15 @@
 import "./ReportHeader.css";
 import React from "react";
 
-
-export const ReportHeader = ({ user}) => {
- 
+export const ReportHeader = ({ user }) => {
   const dateOfBirth = new Date(user.birthday);
   const y = dateOfBirth.getFullYear();
   const m = dateOfBirth.getMonth() + 1;
   const d = dateOfBirth.getDate();
 
-
-
   return (
     <div className="reportHeader">
-      <img
-        src="../avatar.png"
-        alt="bla"
-      ></img>
+      <img src="../avatar.png" alt="bla"></img>
       <div className="infoDiv">
         <div className="nameEmail">
           <p>{user.name}</p>
@@ -28,5 +21,5 @@ export const ReportHeader = ({ user}) => {
         </div>
       </div>
     </div>
-  )
+  );
 };

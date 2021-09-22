@@ -10,8 +10,7 @@ export const Candidates = ({ candidates }) => {
   let history = useHistory();
   const [search, setSearchTerm] = useState("");
 
-CheckingIsTokenValid(candidates, history);
-  
+  CheckingIsTokenValid(candidates, history);
 
   let mappingTheCandidates = candidates
     .filter((candid) => {

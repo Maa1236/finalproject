@@ -11,7 +11,6 @@ import { ReportIDFetch } from "../../Services/Services";
 import { Loader } from "../Loader/Loader";
 
 export const CandidateReport = ({ setIsLoading, isLoading }) => {
-
   const idObject = useParams();
   const [user, setUser] = useState({});
 

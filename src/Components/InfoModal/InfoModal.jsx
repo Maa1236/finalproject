@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import "./InfoModal.css";
 
-export default function InfoModal({
-  reportsId,
-  singleCandidateReports,
-}) {
+export default function InfoModal({ reportsId, singleCandidateReports }) {
   let modalComponent;
   const [show, setShow] = useState(false);
   const [catchReportId, setCatchReportId] = useState("undefined");

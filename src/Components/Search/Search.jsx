@@ -1,5 +1,5 @@
 import React from "react";
-import "./Search.css"
+import "./Search.css";
 
 export const Search = ({ setSearchTerm }) => {
   return (
@@ -13,7 +13,7 @@ export const Search = ({ setSearchTerm }) => {
             type="search"
             placeholder="Search"
             onChange={(event) => {
-              setSearchTerm(event.target.value)
+              setSearchTerm(event.target.value);
             }}
           ></input>
         </form>
@@ -21,6 +21,3 @@ export const Search = ({ setSearchTerm }) => {
     </div>
   );
 };
-
-
-

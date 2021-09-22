@@ -1,9 +1,5 @@
-import './Footer.css';
+import "./Footer.css";
 
 export const Footer = () => {
-    return(
-        <footer>
-         ©️ 2021 Copyright BIT
-    </footer>
-    )
-}
+  return <footer>©️ 2021 Copyright BIT</footer>;
+};
