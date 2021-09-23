@@ -18,6 +18,16 @@ export const Login = () => {
     }
   }
 
+  async function letMeInEnterKey(event) {
+    if (event.key === 'Enter') {
+      let data = await Services(inputEmail, inputPassword);
+      if(data.accessToken){
+        localStorage.setItem("token", data.accessToken);
+        history.push("/candidates");
+      }
+    }
+  }
+
   return (
     <div className="newClassForCss" click="onclick">
       <div className="top"></div>
@@ -30,6 +40,7 @@ export const Login = () => {
           onChange={(event) => {
             setInputEmail(event.target.value);
           }}
+          onKeyDown={letMeInEnterKey}
         />
         <input
           type="password"
@@ -37,6 +48,7 @@ export const Login = () => {
           onChange={(event) => {
             setInputPassword(event.target.value);
           }}
+          onKeyDown={letMeInEnterKey}
         />
         <button type="submit" className="btn btn-dark " onClick={letMeIn}>
           Login
