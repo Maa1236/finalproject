@@ -25,7 +25,7 @@ export const CandidatesFetch = () => {
   });
 };
 
-export const ReportIDFetch = (id) => {
+export const CandidateIDFetch = (id) => {
   return fetch(`http://localhost:3333/api/candidates/${id}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-import { ReportIDFetch } from "../../Services/Services";
+import { CandidateIDFetch } from "../../Services/Services";
 import { Loader } from "../Loader/Loader";
 
 export const CandidateReport = ({ setIsLoading, isLoading }) => {
@@ -15,7 +15,7 @@ export const CandidateReport = ({ setIsLoading, isLoading }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    ReportIDFetch(idObject.id).then((data) => setUser(data));
+    CandidateIDFetch(idObject.id).then((data) => setUser(data));
     setIsLoading(false);
   }, [idObject.id, setIsLoading]);
 
